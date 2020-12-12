@@ -25,7 +25,7 @@ export class NetworksController {
 
   @Patch(':id')
   @UsePipes(ValidationPipe)
-  updateTaskStatus(
+  update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateNetworksDTO: AddUpdateNetworksDto
   ): Networks {
@@ -33,7 +33,7 @@ export class NetworksController {
   }
 
   @Delete(':id')
-  deleteTask(@Param('id', ParseIntPipe) id: number): void {
+  delete(@Param('id', ParseIntPipe) id: number): void {
     this.networksService.delete(id);
   }
 }
