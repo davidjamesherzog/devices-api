@@ -14,7 +14,7 @@ $ npm install
 
 ## Running the database
 
-Postgres is used as the database.  A docker container is supplied to run Postgres and pgAdmin.
+Postgres is used as the database on port 5432.  A docker container is supplied to run Postgres and pgAdmin.  pgAdmin can be run on [http://localhost:8888/](http://localhost:8888/)
 
 ```bash
 $ docker-compose up
@@ -45,6 +45,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Documentation
+- [Networks](apis/NETWORKS.md)
 
 ## Stay in touch
 

@@ -1,7 +1,8 @@
 import { Controller, Get, Post, Patch, Body, Param, ParseIntPipe, UsePipes, ValidationPipe, Delete } from '@nestjs/common';
 import {NetworksService} from './networks.service';
 import {Networks} from './networks.entity';
-import {AddUpdateNetworksDto} from './dtos/add-update-networks.dto';
+import {AddNetworksDto} from './dtos/add-networks.dto';
+import {UpdateNetworksDto} from './dtos/update-networks.dto';
 
 @Controller('networks')
 export class NetworksController {
@@ -14,7 +15,7 @@ export class NetworksController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  add(@Body() addNetworksDTO: AddUpdateNetworksDto): Promise<Networks> {
+  add(@Body() addNetworksDTO: AddNetworksDto): Promise<Networks> {
     return this.networksService.add(addNetworksDTO);
   }
 
@@ -27,7 +28,7 @@ export class NetworksController {
   @UsePipes(ValidationPipe)
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateNetworksDTO: AddUpdateNetworksDto
+    @Body() updateNetworksDTO: UpdateNetworksDto
   ): Promise<Networks> {
     return this.networksService.update(id, updateNetworksDTO);
   }

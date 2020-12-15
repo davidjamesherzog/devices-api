@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import {Networks} from './networks.entity';
-import {AddUpdateNetworksDto} from './dtos/add-update-networks.dto';
+import {AddNetworksDto} from './dtos/add-networks.dto';
+import {UpdateNetworksDto} from './dtos/update-networks.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NetworksRepository } from './networks.repository';
 
@@ -16,7 +17,7 @@ export class NetworksService {
     return await this.networksRepository.find();
   }
 
-  async add(addNetworksDTO: AddUpdateNetworksDto) : Promise<Networks> {
+  async add(addNetworksDTO: AddNetworksDto) : Promise<Networks> {
     return await this.networksRepository.addNetwork(addNetworksDTO);
   }
 
@@ -30,7 +31,7 @@ export class NetworksService {
     return network;
   }
 
-  async update(id: number, updateNetworksDTO: AddUpdateNetworksDto) : Promise<Networks> {
+  async update(id: number, updateNetworksDTO: UpdateNetworksDto) : Promise<Networks> {
     const network: Networks = await this.findById(id);
     return await this.networksRepository.updateNetwork(updateNetworksDTO, network);
   }

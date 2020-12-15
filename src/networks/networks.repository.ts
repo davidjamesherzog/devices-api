@@ -1,11 +1,12 @@
 import { EntityRepository, Repository } from 'typeorm';
-import {AddUpdateNetworksDto} from './dtos/add-update-networks.dto';
+import {AddNetworksDto} from './dtos/add-networks.dto';
+import {UpdateNetworksDto} from './dtos/update-networks.dto';
 import {Networks} from './networks.entity';
 
 @EntityRepository(Networks)
 export class NetworksRepository extends Repository<Networks> {
 
-  async addNetwork(addNetworksDTO: AddUpdateNetworksDto) : Promise<Networks> {
+  async addNetwork(addNetworksDTO: AddNetworksDto) : Promise<Networks> {
     const {name, type, description} = addNetworksDTO;
 
     const network = new Networks();
@@ -18,7 +19,7 @@ export class NetworksRepository extends Repository<Networks> {
     return network;
   }
 
-  async updateNetwork(updateNetworksDTO: AddUpdateNetworksDto, network: Networks) : Promise<Networks> {
+  async updateNetwork(updateNetworksDTO: UpdateNetworksDto, network: Networks) : Promise<Networks> {
     const {name, type, description} = updateNetworksDTO;
 
     // check if name passed
